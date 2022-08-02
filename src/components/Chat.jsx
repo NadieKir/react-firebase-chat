@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Context } from "../index";
 import { Button, Container, Grid, TextField, Avatar } from '@mui/material';
-import Loader from './Loader';
 import firebase from 'firebase/compat/app';
 import { useCollectionData } from "react-firebase-hooks/firestore";
+
+import { Context } from "../index";
+import Loader from './Loader';
+
 
 function Chat() {
   const { auth, firestore } = useContext(Context);
