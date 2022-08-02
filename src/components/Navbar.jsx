@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -8,9 +8,12 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { CHAT_ROUTE, LOGIN_ROUTE } from "../utils/consts";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Context } from "../index";
 
 export default function Navbar() {
-  const user = true;
+  const { auth } = useContext(Context);
+  const [user] = useAuthState(auth);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -29,7 +32,7 @@ export default function Navbar() {
             News
           </Typography>
           {user
-            ? <Button color="inherit">Logout</Button>
+            ? <Button onClick={() => auth.signOut()} color="inherit">Logout</Button>
             :
             <NavLink to={LOGIN_ROUTE}>
               <Button color="inherit">Login</Button>

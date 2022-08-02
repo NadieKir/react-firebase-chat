@@ -1,18 +1,16 @@
 import React, { useContext } from 'react';
-import { Button, Container, Grid } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-// import {Context} from "../index";
-// import firebase from "firebase";
-
+import { Button, Container, Grid, Box } from '@mui/material';
+import { Context } from "../index";
+import firebase from 'firebase/compat/app';
 
 const Login = () => {
-  //const {auth} = useContext(Context)
+  const { auth } = useContext(Context)
 
-  // const login = async () => {
-  //     const provider = new firebase.auth.GoogleAuthProvider()
-  //     const {user} = await auth.signInWithPopup(provider)
-  //     console.log(user)
-  // }
+  const login = async () => {
+    const provider = new firebase.auth.GoogleAuthProvider()
+    const { user } = await auth.signInWithPopup(provider)
+    console.log(user)
+  }
 
   return (
     <Container>
